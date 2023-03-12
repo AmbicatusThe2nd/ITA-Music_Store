@@ -17,9 +17,9 @@ namespace store_items_api.Domain.Services
              await _itemRepository.AddAsync(item);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            await _itemRepository.DeleteAsync(id);
         }
 
         public async Task<IEnumerable<ItemModel>> GetAllAsync()
@@ -32,9 +32,9 @@ namespace store_items_api.Domain.Services
             return _itemRepository.GetAsync(id);
         }
 
-        public Task<ItemModel> UpdateAsync(ItemModel item)
+        public async Task UpdateAsync(string id, ItemModel item)
         {
-            throw new NotImplementedException();
+            await _itemRepository.UpdateAsync(id, item);
         }
     }
 }

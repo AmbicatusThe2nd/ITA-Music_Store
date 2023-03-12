@@ -82,5 +82,50 @@ namespace store_items_api.Application.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutItem(string id, [FromBody] ItemModel toUpdateItem)
+        {
+            try
+            {
+                var item = _itemService.GetAsync(id);
+
+                if(item == null)
+                {
+                    return BadRequest();
+                }
+
+                await _itemService.UpdateAsync(id, toUpdateItem);
+
+                return Ok(item);
+
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(string id)
+        {
+            try
+            {
+                var item = await _itemService.GetAsync(id);
+
+                if(item == null)
+                {
+                    return BadRequest();
+                }
+
+                await _itemService.DeleteAsync(id);
+
+                return Ok(item);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

@@ -16,14 +16,14 @@ namespace store_items_api.Infrastructure
             _itemCollection = database.GetCollection<ItemModel>(config.Value.CollectionName);
         }
 
-        public Task AddAsync(ItemModel item)
+        public async Task AddAsync(ItemModel item)
         {
-            return _itemCollection.InsertOneAsync(item);
+             await _itemCollection.InsertOneAsync(item);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            await _itemCollection.DeleteOneAsync(x => x.Id == id);
         }
 
         public async Task<IEnumerable<ItemModel>> GetAllAsync()
@@ -36,9 +36,9 @@ namespace store_items_api.Infrastructure
             return await _itemCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-        public Task<ItemModel> UpdateAsync(ItemModel item)
+        public async Task UpdateAsync(string id, ItemModel item)
         {
-            throw new NotImplementedException();
+            await _itemCollection.ReplaceOneAsync(x => x.Id == id, item); 
         }
     }
 }
