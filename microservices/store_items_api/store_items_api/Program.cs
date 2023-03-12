@@ -1,6 +1,14 @@
+using store_items_api.Domain.Repositories;
+using store_items_api.Domain.Services;
+using store_items_api.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.Configure<MongoDbConfiguration>(builder.Configuration.GetSection("ConnectionStringsDatabase"));
+builder.Services.AddSingleton<IItemRepository, MongoDbItemRepository>();
+builder.Services.AddSingleton<IItemService, ItemDomainService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

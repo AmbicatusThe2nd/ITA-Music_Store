@@ -1,0 +1,44 @@
+﻿using store_items_api.Domain.Models;
+using store_items_api.Domain.Repositories;
+using MongoDB.Driver;
+using Microsoft.Extensions.Options;
+
+namespace store_items_api.Infrastructure
+{
+    public class MongoDbItemRepository : IItemRepository
+    {
+        private readonly IMongoCollection<ItemModel> _itemCollection;
+
+        public MongoDbItemRepository(IOptions<MongoDbConfiguration> config)
+        {
+            var client = new MongoClient(config.Value.ConnectionString);
+            var database = client.GetDatabase(config.Value.DatabaseName);
+            _itemCollection = database.GetCollection<ItemModel>(config.Value.CollectionName);
+        }
+
+        public Task<ItemModel> AddAsync(ItemModel item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<ItemModel>> GetAllAsync()
+        {
+            return await _itemCollection.Find(_ => true).ToListAsync();
+        }
+
+        public Task<ItemModel> GetAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ItemModel> UpdateAsync(ItemModel item)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
