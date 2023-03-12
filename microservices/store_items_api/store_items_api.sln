@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "store_items_api", "store_items_api\store_items_api.csproj", "{D00E8BB4-A393-410C-9EDD-9E3AD611355B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "store_items_api", "store_items_api\store_items_api.csproj", "{D00E8BB4-A393-410C-9EDD-9E3AD611355B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "store_items_api_tests", "store_items_api_tests\store_items_api_tests.csproj", "{73C725B0-552A-4E69-AB3D-085FAF9867F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D00E8BB4-A393-410C-9EDD-9E3AD611355B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D00E8BB4-A393-410C-9EDD-9E3AD611355B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D00E8BB4-A393-410C-9EDD-9E3AD611355B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73C725B0-552A-4E69-AB3D-085FAF9867F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73C725B0-552A-4E69-AB3D-085FAF9867F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73C725B0-552A-4E69-AB3D-085FAF9867F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73C725B0-552A-4E69-AB3D-085FAF9867F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
