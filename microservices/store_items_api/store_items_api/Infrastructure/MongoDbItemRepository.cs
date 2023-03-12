@@ -16,9 +16,9 @@ namespace store_items_api.Infrastructure
             _itemCollection = database.GetCollection<ItemModel>(config.Value.CollectionName);
         }
 
-        public Task<ItemModel> AddAsync(ItemModel item)
+        public Task AddAsync(ItemModel item)
         {
-            throw new NotImplementedException();
+            return _itemCollection.InsertOneAsync(item);
         }
 
         public Task DeleteAsync(int id)

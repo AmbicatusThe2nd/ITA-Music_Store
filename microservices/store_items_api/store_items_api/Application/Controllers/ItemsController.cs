@@ -67,5 +67,20 @@ namespace store_items_api.Application.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPost]
+        public async Task<ActionResult> PostItem([FromBody] ItemModel item)
+        {
+            try
+            {
+                await _itemService.AddAsync(item);
+
+                return Ok(item);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace store_items_api.Domain.Repositories
     {
         Task<IEnumerable<ItemModel>> GetAllAsync();
         Task<ItemModel> GetAsync(string id);
-        Task<ItemModel> AddAsync(ItemModel item);
+        Task AddAsync(ItemModel item);
         Task<ItemModel> UpdateAsync(ItemModel item);
         Task DeleteAsync(int id);
     }

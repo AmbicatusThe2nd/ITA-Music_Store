@@ -12,9 +12,9 @@ namespace store_items_api.Domain.Services
             _itemRepository = itemRepository; 
         }
 
-        public Task<ItemModel> AddAsync(ItemModel item)
+        public async Task AddAsync(ItemModel item)
         {
-            throw new NotImplementedException();
+             await _itemRepository.AddAsync(item);
         }
 
         public Task DeleteAsync(int id)
