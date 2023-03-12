@@ -20,6 +20,7 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+        working-directory: microservices/store_items_api
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
