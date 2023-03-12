@@ -23,7 +23,10 @@ jobs:
         working-directory: microservices/store_items_api
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: microservices/store_items_api
     - name: Build
       run: dotnet build --no-restore
+      working-directory: microservices/store_items_api
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: microservices/store_items_api
