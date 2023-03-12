@@ -31,9 +31,9 @@ namespace store_items_api.Infrastructure
             return await _itemCollection.Find(_ => true).ToListAsync();
         }
 
-        public Task<ItemModel> GetAsync(int id)
+        public async Task<ItemModel> GetAsync(string id)
         {
-            throw new NotImplementedException();
+            return await _itemCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
         }
 
         public Task<ItemModel> UpdateAsync(ItemModel item)

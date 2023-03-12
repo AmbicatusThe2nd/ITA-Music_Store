@@ -47,5 +47,25 @@ namespace store_items_api.Application.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ItemModel>> GetItem(string id)
+        {
+            try
+            {
+                var item = await _itemService.GetAsync(id);
+
+                if(item == null)
+                {
+                    return BadRequest();
+                }
+
+                return Ok(item);
+            }
+            catch(Exception ex) 
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

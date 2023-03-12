@@ -27,9 +27,9 @@ namespace store_items_api.Domain.Services
             return await _itemRepository.GetAllAsync();
         }
 
-        public Task<ItemModel> GetAsync(int id)
+        public Task<ItemModel> GetAsync(string id)
         {
-            throw new NotImplementedException();
+            return _itemRepository.GetAsync(id);
         }
 
         public Task<ItemModel> UpdateAsync(ItemModel item)
