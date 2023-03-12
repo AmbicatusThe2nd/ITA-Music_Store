@@ -1,6 +1,7 @@
 using store_items_api.Domain.Repositories;
 using store_items_api.Domain.Services;
 using store_items_api.Infrastructure;
+using store_items_api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<ApiLogginMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
