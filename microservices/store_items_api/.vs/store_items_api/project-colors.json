@@ -5,7 +5,12 @@
       "ProjectGuid": "d00e8bb4-a393-410c-9edd-9e3ad611355b",
       "DisplayName": "store_items_api",
       "ColorIndex": 0
+    },
+    "73c725b0-552a-4e69-ab3d-085faf9867f2": {
+      "ProjectGuid": "73c725b0-552a-4e69-ab3d-085faf9867f2",
+      "DisplayName": "store_items_api_tests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
