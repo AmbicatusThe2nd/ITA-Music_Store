@@ -55,4 +55,15 @@ class OrderController(@Qualifier("orderDomainService") @Autowired val orderServi
         }
     }
 
+    @DeleteMapping("/{id}")
+    suspend fun deleteOrder(@PathVariable id: String): ResponseEntity<Unit> {
+        return try {
+            orderService.getAsync(id) ?: return ResponseEntity.notFound().build()
+            orderService.deleteAsync(id)
+            ResponseEntity.ok().build()
+        } catch (e: Exception) {
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+        }
+    }
+
 }
