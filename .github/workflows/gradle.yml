@@ -33,5 +33,5 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: build
-        working-directory: ${{ github.workspace }}/microservices/store_orders_api
+        working-directory: microservices
         gradle-version: 7.6.1
