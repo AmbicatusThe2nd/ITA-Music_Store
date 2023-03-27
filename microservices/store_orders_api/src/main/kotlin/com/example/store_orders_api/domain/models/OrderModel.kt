@@ -8,7 +8,7 @@ data class OrderModel(
     @Id
     var id: String? = null,
     var customerName: String? = "",
-    var costumerEmail: String = "",
+    var costumerEmail: String? = "",
     var shippingAddress: AddressModel = AddressModel(),
     var billingAddress: AddressModel = AddressModel(),
     var items: List<ItemModel> = listOf(),

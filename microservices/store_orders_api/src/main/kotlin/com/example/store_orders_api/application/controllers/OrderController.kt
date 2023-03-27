@@ -37,6 +37,9 @@ class OrderController(@Qualifier("orderDomainService") @Autowired val orderServi
     @PostMapping("")
     suspend fun postOrder(@RequestBody order: OrderModel): ResponseEntity<OrderModel> {
         return try {
+            if (order.costumerEmail.isNullOrEmpty() || order.customerName.isNullOrEmpty()) {
+                throw IllegalArgumentException("Incomplete order object")
+            }
             orderService.addAsync(order)
             ResponseEntity.ok(order)
         } catch (e: Exception) {
