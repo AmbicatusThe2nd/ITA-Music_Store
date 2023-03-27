@@ -44,4 +44,15 @@ class OrderController(@Qualifier("orderDomainService") @Autowired val orderServi
         }
     }
 
+    @PutMapping("/{id}")
+    suspend fun putOrder(@PathVariable id: String, @RequestBody order: OrderModel): ResponseEntity<OrderModel> {
+        return try {
+            orderService.getAsync(id) ?: return ResponseEntity.notFound().build()
+            orderService.updateAsync(id, order)
+            ResponseEntity.ok(order)
+        } catch (e: Exception) {
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+        }
+    }
+
 }
