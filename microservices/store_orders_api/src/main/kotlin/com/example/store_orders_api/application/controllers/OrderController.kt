@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/orders")
@@ -34,6 +31,16 @@ class OrderController(@Qualifier("orderDomainService") @Autowired val orderServi
             }
         } catch (e: Exception) {
             ResponseEntity.notFound().build()
+        }
+    }
+
+    @PostMapping("")
+    suspend fun postOrder(@RequestBody order: OrderModel): ResponseEntity<OrderModel> {
+        return try {
+            orderService.addAsync(order)
+            ResponseEntity.ok(order)
+        } catch (e: Exception) {
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
         }
     }
 
