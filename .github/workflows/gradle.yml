@@ -34,3 +34,4 @@ jobs:
       with:
         arguments: build
         working-directory: microservices/store_orders_api
+        gradle-version: 7.2
