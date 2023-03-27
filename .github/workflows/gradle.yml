@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v3
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -29,8 +30,8 @@ jobs:
         distribution: 'adopt'
         working-directory: microservices/store_orders_api
     - name: Build with Gradle
+      working-directory: microservices/store_orders_api
       uses: gradle/gradle-build-action@v2
       with:
         arguments: build
-        working-directory: microservices/store_orders_api
         gradle-version: 7.6.1
