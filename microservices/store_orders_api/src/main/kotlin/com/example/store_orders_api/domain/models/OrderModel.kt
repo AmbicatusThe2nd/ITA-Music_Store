@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document(collection = "orders")
 data class OrderModel(
     @Id
-    var id: String = "",
+    var id: String? = null,
     var costumerName: String = "",
     var costumerEmail: String = "",
     var shippingAddress: AddressModel = AddressModel(),
