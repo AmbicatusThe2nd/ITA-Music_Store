@@ -15,5 +15,5 @@ jobs:
           distribution: 'temurin'
           working-directory: microservices/store_items_api
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradle/wrapper/gradlew build
         working-directory: microservices/store_items_api
