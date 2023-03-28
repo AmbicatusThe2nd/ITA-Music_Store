@@ -30,7 +30,7 @@ jobs:
         distribution: 'temurin'
         working-directory: microservices/store_orders_api
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./ITA-Music_Store/microservices/store_orders_api/gradle/wrapper/gradlew build
       with:
         arguments: build
         working-directory: microservices/store_orders_api
