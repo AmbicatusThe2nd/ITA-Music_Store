@@ -28,9 +28,7 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        working-directory: microservices/store_orders_api
     - name: Build with Gradle
-      run: ./ITA-Music_Store/microservices/store_orders_api/gradle/wrapper/gradlew build
+      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
-        working-directory: microservices/store_orders_api
