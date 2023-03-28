@@ -2,6 +2,7 @@ package com.example.store_orders_api.application.controllers
 
 import com.example.store_orders_api.domain.models.OrderModel
 import com.example.store_orders_api.domain.services.IOrderService
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.http.HttpStatus
@@ -11,8 +12,12 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/orders")
 class OrderController(private val orderService: IOrderService) {
+
+    private val logger = LoggerFactory.getLogger(OrderController::class.java)
+
     @GetMapping("")
     suspend fun getAllOrders(): ResponseEntity<List<OrderModel>> {
+        logger.info("Getting all orders")
         return try {
             ResponseEntity.ok(orderService.getAllAsync())
         } catch (e: Exception) {
@@ -22,6 +27,7 @@ class OrderController(private val orderService: IOrderService) {
 
     @GetMapping("/{id}")
     suspend fun getOrder(@PathVariable id: String): ResponseEntity<OrderModel> {
+        logger.info("Getting order with id: $id")
         return try {
             val order: OrderModel? = orderService.getAsync(id)
             if (order != null) {
@@ -36,6 +42,7 @@ class OrderController(private val orderService: IOrderService) {
 
     @PostMapping("")
     suspend fun postOrder(@RequestBody order: OrderModel): ResponseEntity<OrderModel> {
+        logger.info("Posting order with id: ${order.id}")
         return try {
             if (order.costumerEmail.isNullOrEmpty() || order.customerName.isNullOrEmpty()) {
                 throw IllegalArgumentException("Incomplete order object")
@@ -49,6 +56,7 @@ class OrderController(private val orderService: IOrderService) {
 
     @PutMapping("/{id}")
     suspend fun putOrder(@PathVariable id: String, @RequestBody order: OrderModel): ResponseEntity<OrderModel> {
+        logger.info("Putting order with id: $id")
         return try {
             orderService.getAsync(id) ?: return ResponseEntity.notFound().build()
             orderService.updateAsync(id, order)
@@ -60,6 +68,7 @@ class OrderController(private val orderService: IOrderService) {
 
     @DeleteMapping("/{id}")
     suspend fun deleteOrder(@PathVariable id: String): ResponseEntity<Unit> {
+        logger.info("Deleting order with id: $id")
         return try {
             orderService.getAsync(id) ?: return ResponseEntity.notFound().build()
             orderService.deleteAsync(id)
