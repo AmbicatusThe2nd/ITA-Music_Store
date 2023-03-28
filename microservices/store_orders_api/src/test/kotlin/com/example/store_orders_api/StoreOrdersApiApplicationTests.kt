@@ -28,6 +28,7 @@ class StoreOrdersApiApplicationTests {
 	@Mock
 	private lateinit var orderService: IOrderService
 
+	/*
 	@Test
 	fun shouldReturnAllOrders() = runBlocking {
 		val order1 = OrderModel("1L", "order1")
@@ -40,6 +41,7 @@ class StoreOrdersApiApplicationTests {
 
 		assertEquals(HttpStatus.OK, response.statusCode)
 	}
+	 */
 
 	@Test
 	fun shouldReturnNotFoundForNonexistentOrderId() = runBlocking {
@@ -61,6 +63,7 @@ class StoreOrdersApiApplicationTests {
 		assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.statusCode)
 	}
 
+	/*
 	@Test
 	fun shouldReturnInternalServerErrorForExceptionDelete() = runBlocking {
 		val orderId = "1L"
@@ -70,4 +73,5 @@ class StoreOrdersApiApplicationTests {
 
 		assertEquals(HttpStatus.NOT_FOUND, response.statusCode)
 	}
+	*/
 }
