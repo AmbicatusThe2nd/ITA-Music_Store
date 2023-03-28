@@ -41,6 +41,7 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+
 /*
 tasks.withType<Jar> {
 	manifest {
@@ -73,4 +74,12 @@ tasks.jar {
 	from({
 		configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
 	})
+
+	from (
+		{
+			configurations.compileClasspath.files { it.name.endsWith(".jar") }
+				.map { zipTree(it) }
+				.flatten()
+		}
+	)
 }

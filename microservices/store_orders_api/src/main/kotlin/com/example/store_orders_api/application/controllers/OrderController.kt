@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/orders")
-class OrderController(@Qualifier("orderDomainService") @Autowired val orderService: IOrderService) {
+class OrderController(private val orderService: IOrderService) {
     @GetMapping("")
     suspend fun getAllOrders(): ResponseEntity<List<OrderModel>> {
         return try {
