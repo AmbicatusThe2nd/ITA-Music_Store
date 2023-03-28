@@ -26,5 +26,4 @@ jobs:
 
     - name: Run tests
       run: ./gradlew test
-      with:
-        working-directory: microservices/store_orders_api
+      working-directory: microservices/store_orders_api
