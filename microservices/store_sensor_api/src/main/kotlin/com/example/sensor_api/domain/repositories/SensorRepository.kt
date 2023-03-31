@@ -14,4 +14,9 @@ class SensorRepository : ReactivePanacheMongoRepository<SensorModel> {
     fun findSensorById(id: ObjectId): Uni<SensorModel> {
         return findById(id)
     }
+
+    fun deleteSensorById(id: ObjectId) {
+        deleteById(id)
+            .subscribe()
+    }
 }
