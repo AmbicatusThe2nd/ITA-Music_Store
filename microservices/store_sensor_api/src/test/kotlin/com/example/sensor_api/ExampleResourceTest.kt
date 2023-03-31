@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 @QuarkusTest
 class ExampleResourceTest {
 
+    /*
     @Test
     fun testHelloEndpoint() {
         given()
@@ -15,6 +16,16 @@ class ExampleResourceTest {
           .then()
              .statusCode(200)
              .body(`is`("Hello from RESTEasy Reactive"))
+    }
+
+     */
+
+    @Test
+    fun testGetAllEndpoint() {
+        given()
+          .`when`().get("/guitar_sensor")
+          .then()
+             .statusCode(200)
     }
 
 }
