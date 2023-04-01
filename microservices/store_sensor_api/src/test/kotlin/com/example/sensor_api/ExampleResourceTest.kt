@@ -8,24 +8,44 @@ import org.junit.jupiter.api.Test
 @QuarkusTest
 class ExampleResourceTest {
 
-    /*
-    @Test
-    fun testHelloEndpoint() {
-        given()
-          .`when`().get("/hello")
-          .then()
-             .statusCode(200)
-             .body(`is`("Hello from RESTEasy Reactive"))
-    }
-
-     */
-
     @Test
     fun testGetAllEndpoint() {
         given()
           .`when`().get("/guitar_sensor")
           .then()
              .statusCode(200)
+    }
+
+    @Test
+    fun testGetSpecificEndpoint() {
+        given()
+          .`when`().get("/guitar_sensor/6426ad5055cf3a669f286d3b")
+          .then()
+             .statusCode(200)
+    }
+
+    @Test
+    fun testGetSpecificEndpointWithInvalidId() {
+        given()
+          .`when`().get("/guitar_sensor/6426ad5055cf3a669f286d3")
+          .then()
+             .statusCode(400)
+    }
+
+    @Test
+    fun testDeleteSpecificEndpoint() {
+        given()
+          .`when`().delete("/guitar_sensor/6426ad5055cf3a669f286d3b")
+          .then()
+             .statusCode(204)
+    }
+
+    @Test
+    fun testDeleteSpecificEndpointWithInvalidId() {
+        given()
+          .`when`().delete("/guitar_sensor/6426ad5055cf3a669f286d3")
+          .then()
+             .statusCode(400)
     }
 
 }
