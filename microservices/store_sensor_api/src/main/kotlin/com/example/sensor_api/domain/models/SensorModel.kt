@@ -15,6 +15,5 @@ data class SensorModel(
     var timestamp: String = "",
     var notes_per_minute: Int = 0,
     var loudness: Int = 0,
-    @field:JsonProperty("string_vibration_amplitude")
-    var stringVibrationAmplitude: StringVibrationAmplitude? = StringVibrationAmplitude(),
+    var string_vibration_amplitude: StringVibrationAmplitude? = StringVibrationAmplitude(),
 )

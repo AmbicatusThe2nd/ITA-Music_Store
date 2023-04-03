@@ -44,7 +44,7 @@ class ExampleResourceTest {
           .then()
              .statusCode(204)
     }
-    
+
      */
 
     @Test
