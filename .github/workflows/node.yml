@@ -1,0 +1,29 @@
+name: Test on Push to Main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        working-directory: microservices/store_sensor_api_grpc
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+          working-directory: microservices/store_sensor_api_grpc
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: microservices/store_sensor_api_grpc
+
+      - name: Run tests
+        run: npm test
+        working-directory: microservices/store_sensor_api_grpc
