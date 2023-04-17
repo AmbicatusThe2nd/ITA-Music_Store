@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  dotnet:
+    build:
+      context: ./microservices/store_items_api/store_items_api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - my-network
+  springboot:
+    build:
+      context: ./microservices/store_orders_api
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    networks:
+      - my-network
+  quarkus:
+    build:
+      context: ./microservices/store_sensor_api/src/main/docker
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+  grpc:
+    build:
+      context: ./microservices/store_grpc_api
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    networks:
+      - my-network
+
+networks:
+  my-network:
