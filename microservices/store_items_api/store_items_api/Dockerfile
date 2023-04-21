@@ -1,20 +1,12 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine as build
+EXPOSE 7126
 EXPOSE 80
-EXPOSE 443
-
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["stores_item_api/stores_item_api.csproj", "stores_item_api/"]
-RUN dotnet restore "stores_item_api/stores_item_api.csproj"
-COPY . .
-WORKDIR "/src/stores_item_api"
-RUN dotnet build "stores_item_api.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "stores_item_api.csproj" -c Release -o /app/publish
-
-FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "stores_item_api.dll"]
+COPY . .
+RUN dotnet restore
+RUN dotnet publish -o /app/published-app
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine as runtime
+WORKDIR /app
+COPY --from=build /app/published-app /app
+ENTRYPOINT [ "dotnet", "/app/store_items_api.dll" ]
