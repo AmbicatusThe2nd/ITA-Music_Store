@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+message SensorModel {
+  string sensor_type = 1;
+  string manufacturer = 2;
+  string model = 3;
+  string serial_number = 4;
+  string timestamp = 5;
+  int32 notes_per_minute = 6;
+  int32 loudness = 7;
+  StringVibrationAmplitude string_vibration_amplitude = 8;
+}
+
+message StringVibrationAmplitude {
+  double low1 = 1;
+  double low2 = 2;
+  double low3 = 3;
+  double high3 = 4;
+  double high2 = 5;
+  double high1 = 6;
+}
+
+message Empty {}
+
+message SensorList {
+    repeated SensorModel sensors = 1;
+}
+
+message SensorId {
+  string id = 1;
+}
+
+service SensorService {
+    rpc GetSensorData (Empty) returns (SensorList);
+    rpc GetById (SensorId) returns (SensorModel);
+    rpc Delete (SensorId) returns (Empty);
+}
