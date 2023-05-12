@@ -32,11 +32,19 @@ namespace store_items_api.Application.Controllers
                         name = item.name,
                         price = item.price,
                         description = item.description,
-                        color = item.color,
-                        category = item.category,
-                        type = item.type,
+                        image = item.image,
                         manufacturer = item.manufacturer,
-                        discount = item.discount,
+                        type = item.type,
+                        sku = item.sku,
+                        status = item.status,
+                        featured = item.featured,
+                        catalog_visibility = item.catalog_visibility,
+                        tax_class = item.tax_class,
+                        tax_status = item.tax_status,
+                        stock_status = item.stock_status,
+                        backorders = item.backorders,
+                        sale_price = item.sale_price,
+                        category_ids = item.category_ids,
                     });
                 }
 
