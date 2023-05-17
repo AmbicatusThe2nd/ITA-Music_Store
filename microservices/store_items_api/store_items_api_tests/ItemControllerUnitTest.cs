@@ -31,27 +31,40 @@ namespace store_items_api_tests
                 {
                     Id = "1",
                     name = "Flight guitar",
-                    price = 300.00,
+                    price = "200.00 €",
                     description = "Lorem ipsum",
-                    color = "Black",
-                    category = "Guitar",
-                    subcategory =  "Electric",
-                    type =  "Les paul",
+                    image = "slika.jpg",
                     manufacturer = "Flight",
-                    discount = 0.00
+                    type = "Electric",
+                    sku = "C1544",
+                    status = "Availible",
+                    featured = "1",
+                    catalog_visibility = "visible",
+                    tax_status = "taxable",
+                    tax_class = "standard",
+                    stock_status = "1",
+                    backorders = "0",
+                    sale_price = "200.00 €",
+                    category_ids = "Kitare > Electrične kitare",
                 },
                 new ItemModel()
                 {
                     Id = "2",
                     name = "Flight guitar",
-                    price = 300.00,
-                    description = "Lorem ipsum",
-                    color = "Brown",
-                    category = "Guitar",
-                    subcategory =  "Electric",
-                    type =  "Les paul",
+                    price = "300.00 €",
+                    image = "slika.jpg",
                     manufacturer = "Flight",
-                    discount = 0.00
+                    type = "Electric",
+                    sku = "C1544",
+                    status = "Availible",
+                    featured = "1",
+                    catalog_visibility = "visible",
+                    tax_status = "taxable",
+                    tax_class = "standard",
+                    stock_status = "1",
+                    backorders = "0",
+                    sale_price = "200.00 €",
+                    category_ids = "Kitare > Electrične kitare",
                 }
             };
 
@@ -72,14 +85,21 @@ namespace store_items_api_tests
             {
                 Id = itemId,
                 name = "Flight guitar",
-                price = 300.00,
+                price = "300.00 €",
                 description = "Lorem ipsum",
-                color = "Brown",
-                category = "Guitar",
-                subcategory = "Electric",
-                type = "Les paul",
+                image = "slika.jpg",
                 manufacturer = "Flight",
-                discount = 0.00
+                type = "Electric",
+                sku = "C1544",
+                status = "Availible",
+                featured = "1",
+                catalog_visibility = "visible",
+                tax_status = "taxable",
+                tax_class = "standard",
+                stock_status = "1",
+                backorders = "0",
+                sale_price = "200.00 €",
+                category_ids = "Kitare > Electrične kitare",
             };
 
             _mockItemService.Setup(service => service.GetAsync(itemId)).ReturnsAsync(itemModel);
@@ -92,12 +112,20 @@ namespace store_items_api_tests
             Assert.Equal(itemModel.name, item.name);
             Assert.Equal(itemModel.price, item.price);
             Assert.Equal(itemModel.description, item.description);
-            Assert.Equal(itemModel.color, item.color);
-            Assert.Equal(itemModel.category, item.category);
-            Assert.Equal(itemModel.type, item.type);
-            Assert.Equal(itemModel.subcategory, item.subcategory);
+            Assert.Equal(itemModel.image, item.image);
             Assert.Equal(itemModel.manufacturer, item.manufacturer);
-            Assert.Equal(itemModel.discount, item.discount);
+            Assert.Equal(itemModel.type, item.type);
+            Assert.Equal(itemModel.sku, item.sku);
+            Assert.Equal(itemModel.manufacturer, item.manufacturer);
+            Assert.Equal(itemModel.status, item.status);
+            Assert.Equal(itemModel.featured, item.featured);
+            Assert.Equal(itemModel.catalog_visibility, item.catalog_visibility);
+            Assert.Equal(itemModel.tax_status, item.tax_status);
+            Assert.Equal(itemModel.tax_class, item.tax_class);
+            Assert.Equal(itemModel.stock_status, item.stock_status);
+            Assert.Equal(itemModel.backorders, item.backorders);
+            Assert.Equal(itemModel.sale_price, item.sale_price);
+            Assert.Equal(itemModel.category_ids, item.category_ids);
         }
 
         [Fact]
@@ -121,14 +149,21 @@ namespace store_items_api_tests
             {
                 Id = "1",
                 name = "Flight guitar",
-                price = 300.00,
+                price = "300.00 €",
                 description = "Lorem ipsum",
-                color = "Brown",
-                category = "Guitar",
-                subcategory = "Electric",
-                type = "Les paul",
+                image = "slika.jpg",
                 manufacturer = "Flight",
-                discount = 0.00
+                type = "Electric",
+                sku = "C1544",
+                status = "Availible",
+                featured = "1",
+                catalog_visibility = "visible",
+                tax_status = "taxable",
+                tax_class = "standard",
+                stock_status = "1",
+                backorders = "0",
+                sale_price = "200.00 €",
+                category_ids = "Kitare > Electrične kitare",
             };
 
             var result = await _itemsController.PostItem(itemModel);
@@ -146,14 +181,20 @@ namespace store_items_api_tests
             {
                 Id = itemId,
                 name = "Flight guitar",
-                price = 300.00,
-                description = "Lorem ipsum",
-                color = "Brown",
-                category = "Guitar",
-                subcategory = "Electric",
-                type = "Les paul",
+                price = "300.00 €",
+                image = "slika.jpg",
                 manufacturer = "Flight",
-                discount = 0.00
+                type = "Electric",
+                sku = "C1544",
+                status = "Availible",
+                featured = "1",
+                catalog_visibility = "visible",
+                tax_status = "taxable",
+                tax_class = "standard",
+                stock_status = "1",
+                backorders = "0",
+                sale_price = "200.00 €",
+                category_ids = "Kitare > Electrične kitare",
             };
 
             _mockItemService.Setup(service => service.GetAsync(itemId)).ReturnsAsync(itemModel);
