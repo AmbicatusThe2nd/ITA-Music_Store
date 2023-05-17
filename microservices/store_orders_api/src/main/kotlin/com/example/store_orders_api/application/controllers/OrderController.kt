@@ -50,6 +50,7 @@ class OrderController(private val orderService: IOrderService) {
             orderService.addAsync(order)
             ResponseEntity.ok(order)
         } catch (e: Exception) {
+            logger.info("Problem: ${e.message}")
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
         }
     }
