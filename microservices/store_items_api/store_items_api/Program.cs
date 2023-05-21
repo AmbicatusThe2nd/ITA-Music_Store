@@ -1,3 +1,4 @@
+using store_items_api.Authentication;
 using store_items_api.Domain.Repositories;
 using store_items_api.Domain.Services;
 using store_items_api.Infrastructure;
@@ -30,6 +31,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ApiKeyAuthMiddleware>();
 
 app.MapControllers();
 
