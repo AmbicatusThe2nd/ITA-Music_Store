@@ -1,36 +1,53 @@
-version: '3'
-
+version: "3"
 services:
-  dotnet:
-    build:
-      context: ./microservices/store_items_api/store_items_api
-      dockerfile: Dockerfile
+
+  orders:
+    image: roktkalcic/ordersapi:v1.3
     ports:
-      - "8000:8000"
+      - 8080:8080
     networks:
       - my-network
-  springboot:
-    build:
-      context: ./microservices/store_orders_api
-      dockerfile: Dockerfile
+
+  sensor:
+    image: roktkalcic/sensorapi:v1.1
     ports:
-      - "8001:8001"
+      - 8000:8000
     networks:
       - my-network
-  quarkus:
-    build:
-      context: ./microservices/store_sensor_api/src/main/docker
-      dockerfile: Dockerfile
+
+  navbar:
+    image: roktkalcic/navbar:v1.1
     ports:
-      - "8002:8002"
-  grpc:
-    build:
-      context: ./microservices/store_grpc_api
-      dockerfile: Dockerfile
-    ports:
-      - "8002:8002"
+      - 3333:3333
     networks:
       - my-network
+    # Add additional configuration options as needed
+
+  host:
+    image: roktkalcic/host:v1.1
+    ports:
+      - 3200:3200
+    networks:
+      - my-network
+    # Add additional configuration options as needed
+  
+  mobile-api-gateway:
+    image: roktkalcic/mobile-api-gateway:v1.3
+    ports:
+      - 4000:4000
+    networks:
+      - my-network
+    # Add additional configuration options as needed
+
+  web-api-gateway:
+    image: roktkalcic/web-api-gateway:v1.1
+    ports:
+      - 3000:3000
+    networks:
+      - my-network
+    # Add additional configuration options as needed
+
 
 networks:
   my-network:
+    driver: bridge

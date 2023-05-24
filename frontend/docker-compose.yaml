@@ -1,0 +1,21 @@
+version: "3"
+services:
+  navbar:
+    image: roktkalcic/navbar:v1.1
+    ports:
+      - 3333:3333
+    networks:
+      - my-network
+    # Add additional configuration options as needed
+
+  host:
+    image: roktkalcic/host:v1.1
+    ports:
+      - 3200:3200
+    networks:
+      - my-network
+    # Add additional configuration options as needed
+
+networks:
+  my-network:
+    driver: bridge

@@ -1,0 +1,21 @@
+version: "3"
+services:
+  mobile-api-gateway:
+    image: roktkalcic/mobile-api-gateway:v1.3
+    ports:
+      - 4000:4000
+    networks:
+      - my-network
+    # Add additional configuration options as needed
+
+  web-api-gateway:
+    image: roktkalcic/web-api-gateway:v1.1
+    ports:
+      - 3000:3000
+    networks:
+      - my-network
+    # Add additional configuration options as needed
+
+networks:
+  my-network:
+    driver: bridge
